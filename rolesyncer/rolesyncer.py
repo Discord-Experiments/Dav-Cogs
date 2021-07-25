@@ -46,16 +46,6 @@ class RoleSyncer(commands.Cog):
                             )
                         except discord.HTTPException as e:
                             self.log.exception(e, exc_info=True)
-                    elif r1 in before.roles:
-                        try:
-                            await after.remove_roles(
-                                r2,
-                                reason=_("One-way rolesync / {r1name} removed.").format(
-                                    r1name=r1.name
-                                ),
-                            )
-                        except discord.HTTPException as e:
-                            self.log.exception(e, exc_info=True)
                 for r in roles["twosync"]:
                     r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
                     if r1 in before.roles and r2 in before.roles:
