@@ -36,7 +36,7 @@ class RoleSyncer(commands.Cog):
                 roles = await self.config.guild(after.guild).all()
                 for r in roles["onesync"]:
                     r1, r2 = guild.get_role(r[0]), guild.get_role(r[1])
-                    if r1 in after.roles:
+                    if r1 in after.roles and r1 not in before.roles:
                         try:
                             await after.add_roles(
                                 r2,
